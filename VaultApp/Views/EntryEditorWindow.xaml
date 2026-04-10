@@ -1,0 +1,163 @@
+<Window x:Class="VaultApp.Views.EntryEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Entrada"
+        Height="608" Width="497"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource PrimaryBrush}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+
+    <Grid Margin="28">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Título da janela -->
+        <TextBlock Grid.Row="0"
+                   FontSize="18" FontWeight="SemiBold"
+                   Foreground="{StaticResource TextPrimaryBrush}"
+                   Margin="0,0,0,20">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="Editar entrada" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsNew}" Value="True">
+                            <Setter Property="Text" Value="Nova entrada" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <!-- Campos -->
+        <StackPanel Grid.Row="1">
+
+            <!-- Título -->
+            <StackPanel>
+                <TextBlock Text="Título *"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="12" Margin="0,0,0,4" />
+                <TextBox Style="{StaticResource DarkTextBox}"
+                         Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <!-- Usuário -->
+            <StackPanel>
+                <TextBlock Text="Usuário / E-mail"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="12" Margin="0,0,0,4" />
+                <TextBox Style="{StaticResource DarkTextBox}"
+                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <!-- Senha + toggle show -->
+            <StackPanel>
+                <TextBlock Text="Senha"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="12" Margin="0,0,0,4" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Campo senha visível / oculto -->
+                    <TextBox x:Name="PasswordVisible"
+                             Grid.Column="0"
+                             Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="0,0,6,0">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource DarkTextBox}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+
+                    <PasswordBox x:Name="PasswordHidden"
+                                 Grid.Column="0"
+                                 Margin="0,0,6,0">
+                        <PasswordBox.Style>
+                            <Style TargetType="PasswordBox" BasedOn="{StaticResource DarkPasswordBox}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </PasswordBox.Style>
+                    </PasswordBox>
+
+                    <Button Grid.Column="1"
+                            Content="👁"
+                            Style="{StaticResource GhostButton}"
+                            Command="{Binding ToggleShowCommand}"
+                            Padding="10,8"
+                            Margin="0,0,6,0" />
+
+                    <Button Grid.Column="2"
+                            Content="Gerar"
+                            Style="{StaticResource PrimaryButton}"
+                            Command="{Binding GenerateCommand}"
+                            Padding="12,8" />
+                </Grid>
+            </StackPanel>
+
+            <!-- URL -->
+            <StackPanel>
+                <TextBlock Text="URL"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="12" Margin="0,0,0,4" />
+                <TextBox Style="{StaticResource DarkTextBox}"
+                         Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <!-- Categoria -->
+            <StackPanel>
+                <TextBlock Text="Categoria"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="12" Margin="0,0,0,4" />
+                <ComboBox ItemsSource="{Binding Categories}"
+                          SelectedItem="{Binding Category}"
+                          Background="{StaticResource AccentBrush}"
+                          Foreground="{StaticResource TextPrimaryBrush}"
+                          BorderThickness="0"
+                          Padding="10,8" />
+            </StackPanel>
+
+            <!-- Notas -->
+            <StackPanel>
+                <TextBlock Text="Notas"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="12" Margin="0,0,0,4" />
+                <TextBox Style="{StaticResource DarkTextBox}"
+                         Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}"
+                         Height="64"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Botões -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+            <Button Content="Cancelar"
+                    Style="{StaticResource GhostButton}"
+                    Click="CancelButton_Click" />
+            <Button Content="Salvar"
+                    Style="{StaticResource PrimaryButton}"
+                    Command="{Binding SaveCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

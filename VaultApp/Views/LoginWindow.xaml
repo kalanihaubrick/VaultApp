@@ -1,0 +1,98 @@
+<Window x:Class="VaultApp.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:VaultApp.ViewModels"
+        Title="VaultApp" Height="420" Width="380"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource PrimaryBrush}">
+
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Ícone / Logo -->
+        <TextBlock Grid.Row="0"
+                   Text="🔐"
+                   FontSize="48"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,16" />
+
+        <!-- Título dinâmico -->
+        <TextBlock Grid.Row="1"
+                   FontSize="22" FontWeight="SemiBold"
+                   Foreground="{StaticResource TextPrimaryBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,4">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="Bem-vindo de volta" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsNewVault}" Value="True">
+                            <Setter Property="Text" Value="Criar novo vault" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Row="2"
+                   FontSize="13"
+                   Foreground="{StaticResource TextSecondaryBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,28">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="Digite sua senha master" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsNewVault}" Value="True">
+                            <Setter Property="Text" Value="Escolha uma senha master forte" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <!-- Campo de senha -->
+        <PasswordBox x:Name="PasswordBox"
+                     Grid.Row="3"
+                     Style="{StaticResource DarkPasswordBox}"
+                     Margin="0,0,0,12"
+                     KeyDown="PasswordBox_KeyDown" />
+
+        <!-- Mensagem de erro -->
+        <TextBlock Grid.Row="4"
+                   Text="{Binding ErrorMessage}"
+                   Foreground="{StaticResource DangerBrush}"
+                   FontSize="12"
+                   Margin="0,0,0,12"
+                   TextWrapping="Wrap"
+                   Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}" />
+
+        <!-- Botão entrar / criar -->
+        <Button Grid.Row="5"
+                VerticalAlignment="Top"
+                Click="UnlockButton_Click"
+                IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+                    <Setter Property="Content" Value="Entrar" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsNewVault}" Value="True">
+                            <Setter Property="Content" Value="Criar vault" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                            <Setter Property="Content" Value="Abrindo..." />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>
