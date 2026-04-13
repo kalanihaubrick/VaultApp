@@ -8,16 +8,26 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>VaultApp</RootNamespace>
     <AssemblyName>VaultApp</AssemblyName>
-    <ApplicationIcon>Assets\vault.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\vault2.ico</ApplicationIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>vault2.ico</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\vault2.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VaultApp.Core\VaultApp.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\vault.ico">
+    <None Update="Assets\vault2.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
