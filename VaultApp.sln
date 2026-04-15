@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultApp.Core", "VaultApp.Core\VaultApp.Core.csproj", "{80D4802A-701A-1BE2-1E4B-ACEC3D34B75E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultApp.Core.Tests", "VaultApp.Core.Tests\VaultApp.Core.Tests.csproj", "{94163759-9DEC-47D5-97C6-8C4DB61A89C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{80D4802A-701A-1BE2-1E4B-ACEC3D34B75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D4802A-701A-1BE2-1E4B-ACEC3D34B75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D4802A-701A-1BE2-1E4B-ACEC3D34B75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94163759-9DEC-47D5-97C6-8C4DB61A89C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94163759-9DEC-47D5-97C6-8C4DB61A89C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94163759-9DEC-47D5-97C6-8C4DB61A89C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94163759-9DEC-47D5-97C6-8C4DB61A89C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
