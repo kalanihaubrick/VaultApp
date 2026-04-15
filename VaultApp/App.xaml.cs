@@ -1,5 +1,6 @@
 using System.IO;
 using System.Windows;
+using VaultApp.Core.Crypto;
 using VaultApp.Core.Services;
 using VaultApp.ViewModels;
 
@@ -20,7 +21,8 @@ public partial class App : Application
 
         Directory.CreateDirectory(Path.GetDirectoryName(vaultPath)!);
 
-        var storage = new StorageService(vaultPath);
+        var cryptoService = new CryptoService();
+        var storage = new StorageService(vaultPath, cryptoService);
         VaultService = new VaultService(storage);
         ClipboardService = new ClipboardService();
         GeneratorService = new PasswordGeneratorService();
