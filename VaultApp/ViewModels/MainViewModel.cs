@@ -16,6 +16,8 @@ public class MainViewModel : BaseViewModel
     public ObservableCollection<VaultEntry> Entries    { get; } = [];
     public ObservableCollection<string>     Categories { get; } = [];
 
+    public AppViewModel AppViewModel { get; }
+
     public string SearchQuery
     {
         get => _searchQuery;
@@ -49,6 +51,8 @@ public class MainViewModel : BaseViewModel
 
     public MainViewModel()
     {
+        AppViewModel = App.AppViewModel;
+
         NewEntryCommand     = new RelayCommand(OpenNewEntry);
         EditEntryCommand    = new RelayCommand(OpenEditEntry,  () => SelectedEntry is not null);
         DeleteEntryCommand  = new RelayCommand(DeleteEntry,    () => SelectedEntry is not null);

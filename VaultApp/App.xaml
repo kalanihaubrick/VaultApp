@@ -5,7 +5,7 @@
              Startup="Application_Startup">
     <Application.Resources>
 
-        <!-- Paleta de cores -->
+        <!-- Tema Escuro (Padrão) -->
         <Color x:Key="PrimaryColor">#1A1A2E</Color>
         <Color x:Key="SurfaceColor">#16213E</Color>
         <Color x:Key="AccentColor">#0F3460</Color>
@@ -13,6 +13,15 @@
         <Color x:Key="TextPrimaryColor">#EAEAEA</Color>
         <Color x:Key="TextSecondaryColor">#9E9E9E</Color>
         <Color x:Key="DangerColor">#CF6679</Color>
+
+        <!-- Tema Claro -->
+        <Color x:Key="PrimaryColorLight">#F5F5F5</Color>
+        <Color x:Key="SurfaceColorLight">#FFFFFF</Color>
+        <Color x:Key="AccentColorLight">#E8F0FF</Color>
+        <Color x:Key="HighlightColorLight">#E94560</Color>
+        <Color x:Key="TextPrimaryColorLight">#1A1A2E</Color>
+        <Color x:Key="TextSecondaryColorLight">#666666</Color>
+        <Color x:Key="DangerColorLight">#CF6679</Color>
 
         <SolidColorBrush x:Key="PrimaryBrush"       Color="{StaticResource PrimaryColor}" />
         <SolidColorBrush x:Key="SurfaceBrush"       Color="{StaticResource SurfaceColor}" />
@@ -27,8 +36,8 @@
         <conv:InverseBoolConverter        x:Key="InverseBoolConverter" />
 
         <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"   Value="{StaticResource HighlightBrush}" />
-            <Setter Property="Foreground"   Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="Background"   Value="{DynamicResource HighlightBrush}" />
+            <Setter Property="Foreground"   Value="{DynamicResource TextPrimaryBrush}" />
             <Setter Property="FontWeight"   Value="SemiBold" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Padding"      Value="16,10" />
@@ -60,14 +69,14 @@
 
         <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
         </Style>
 
         <!-- TextBox escuro -->
         <Style x:Key="DarkTextBox" TargetType="TextBox">
-            <Setter Property="Background"        Value="{StaticResource AccentBrush}" />
-            <Setter Property="Foreground"        Value="{StaticResource TextPrimaryBrush}" />
-            <Setter Property="CaretBrush"        Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="Background"        Value="{DynamicResource AccentBrush}" />
+            <Setter Property="Foreground"        Value="{DynamicResource TextPrimaryBrush}" />
+            <Setter Property="CaretBrush"        Value="{DynamicResource TextPrimaryBrush}" />
             <Setter Property="BorderBrush"       Value="Transparent" />
             <Setter Property="BorderThickness"   Value="0" />
             <Setter Property="Padding"           Value="10,8" />
@@ -88,9 +97,9 @@
 
         <!-- PasswordBox escuro -->
         <Style x:Key="DarkPasswordBox" TargetType="PasswordBox">
-            <Setter Property="Background"        Value="{StaticResource AccentBrush}" />
-            <Setter Property="Foreground"        Value="{StaticResource TextPrimaryBrush}" />
-            <Setter Property="CaretBrush"        Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="Background"        Value="{DynamicResource AccentBrush}" />
+            <Setter Property="Foreground"        Value="{DynamicResource TextPrimaryBrush}" />
+            <Setter Property="CaretBrush"        Value="{DynamicResource TextPrimaryBrush}" />
             <Setter Property="BorderBrush"       Value="Transparent" />
             <Setter Property="BorderThickness"   Value="0" />
             <Setter Property="Padding"           Value="10,8" />

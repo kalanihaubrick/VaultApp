@@ -5,7 +5,7 @@
         Height="608" Width="497"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        Background="{StaticResource PrimaryBrush}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+        Background="{DynamicResource PrimaryBrush}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
 
     <Grid Margin="28">
         <Grid.RowDefinitions>
@@ -17,7 +17,7 @@
         <!-- Título da janela -->
         <TextBlock Grid.Row="0"
                    FontSize="18" FontWeight="SemiBold"
-                   Foreground="{StaticResource TextPrimaryBrush}"
+                   Foreground="{DynamicResource TextPrimaryBrush}"
                    Margin="0,0,0,20">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -37,7 +37,7 @@
             <!-- Título -->
             <StackPanel>
                 <TextBlock Text="Título *"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            FontSize="12" Margin="0,0,0,4" />
                 <TextBox Style="{StaticResource DarkTextBox}"
                          Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
@@ -46,7 +46,7 @@
             <!-- Usuário -->
             <StackPanel>
                 <TextBlock Text="Usuário / E-mail"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            FontSize="12" Margin="0,0,0,4" />
                 <TextBox Style="{StaticResource DarkTextBox}"
                          Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
@@ -55,7 +55,7 @@
             <!-- Senha + toggle show -->
             <StackPanel>
                 <TextBlock Text="Senha"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            FontSize="12" Margin="0,0,0,4" />
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -114,7 +114,7 @@
             <!-- URL -->
             <StackPanel>
                 <TextBlock Text="URL"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            FontSize="12" Margin="0,0,0,4" />
                 <TextBox Style="{StaticResource DarkTextBox}"
                          Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" />
@@ -123,12 +123,12 @@
             <!-- Categoria -->
             <StackPanel>
                 <TextBlock Text="Categoria"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            FontSize="12" Margin="0,0,0,4" />
                 <ComboBox ItemsSource="{Binding Categories}"
                           SelectedItem="{Binding Category}"
-                          Background="{StaticResource AccentBrush}"
-                          Foreground="{StaticResource TextPrimaryBrush}"
+                          Background="{DynamicResource AccentBrush}"
+                          Foreground="{DynamicResource TextPrimaryBrush}"
                           BorderThickness="0"
                           Padding="10,8" />
             </StackPanel>
@@ -136,7 +136,7 @@
             <!-- Notas -->
             <StackPanel>
                 <TextBlock Text="Notas"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            FontSize="12" Margin="0,0,0,4" />
                 <TextBox Style="{StaticResource DarkTextBox}"
                          Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}"
